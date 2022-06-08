@@ -3,4 +3,6 @@
     <string name="loginEd_username">Username</string>
     <string name="loginEd_password">Password</string>
     <string name="login_loginBtn">Login</string>
+    <string name="from_login_to_regi">Not registered? click the icon to register</string>
+    <string name="login">Login</string>
 </resources>

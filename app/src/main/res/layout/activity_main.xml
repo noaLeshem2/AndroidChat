@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
+
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="<#adcdd280>"
+
             android:text="@string/login_loginBtn" />
 
     </LinearLayout>
@@ -51,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteY="84dp" />
+        tools:layout_editor_absoluteY="84dp"
+        android:layout_gravity="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

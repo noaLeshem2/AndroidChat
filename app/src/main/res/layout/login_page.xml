@@ -8,13 +8,29 @@
     android:orientation="vertical"
     android:background="@drawable/background">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/login"
+        android:textSize="40sp"
+        android:textColor="#498694"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
 
 
         <EditText
@@ -35,13 +51,45 @@
             android:hint="@string/loginEd_password"
             android:inputType="textPassword" />
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="<#adcdd280>"
-            android:text="@string/login_loginBtn" />
+            android:background="#ADCDD2"
 
+            android:backgroundTint="#ADCDD2"
+            android:text="@string/login_loginBtn"
+            app:strokeColor="#ADCDD2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#498694">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/from_login_to_regi"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:scrollbarSize="20dp"
+            app:srcCompat="@drawable/ic_swich_to_regi"
+            tools:layout_editor_absoluteX="139dp"
+            tools:layout_editor_absoluteY="227dp"
+            android:background="@color/white"/>
     </LinearLayout>
 
     <ImageView
@@ -51,6 +99,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteY="84dp" />
+        tools:layout_editor_absoluteY="84dp"
+        tools:ignore="MissingConstraints" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
