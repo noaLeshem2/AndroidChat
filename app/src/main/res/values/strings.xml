@@ -5,4 +5,8 @@
     <string name="login_loginBtn">Login</string>
     <string name="from_login_to_regi">Not registered? click the icon to register</string>
     <string name="login">Login</string>
+    <string name="register_displayName">Display Name</string>
+    <string name="register_btnRegister">Register</string>
+    <string name="click_here">click here</string>
+    <string name="register">Register</string>
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class RegisterPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_page);
 
-        Button to_login = findViewById(R.id.btnAlreadyReg);
+        ImageButton to_login = findViewById(R.id.btnAlreadyReg);
         to_login.setOnClickListener(v->{
            Intent i = new Intent(this, MainActivity.class);
            startActivity(i);

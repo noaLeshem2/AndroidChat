@@ -53,6 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteY="84dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
