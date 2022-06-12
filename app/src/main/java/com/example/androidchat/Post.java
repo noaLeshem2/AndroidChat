@@ -28,7 +28,7 @@ public class Post {
         this.content = con;
     }
 
-    public Post(int id, String content, String time, Image image){
+    public Post(int id, String content){
         this.id=id;
         this.content=content;
     }
