@@ -39,7 +39,7 @@ public class chat_page extends AppCompatActivity {
 
         ListView lvPosts = findViewById(R.id.list_chats);
         adapter = new ArrayAdapter<Post>(this,
-                android.R.layout.simple_list_item_1, posts);
+                R.layout.list_chats, posts);
 
         lvPosts.setAdapter(adapter);
 
