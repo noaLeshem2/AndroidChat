@@ -1,9 +1,12 @@
 package com.example.androidchat;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.io.ByteArrayOutputStream;
 
 @Entity
 public class Post {
@@ -14,13 +17,14 @@ public class Post {
     private String displayName;
     private Image image;
     private String time;
+    private byte[] image1;
 
     public void setDisplayName(String displayName){this.displayName = displayName;}
 
     public String getDisplayName(){return displayName;}
 
     public void setImage(Image image) {
-        this.image = image;
+        this.image1 = getBitmapAsByteArray(image);
     }
 
     public void setTime(String time) {
@@ -64,5 +68,11 @@ public class Post {
                 "Id=" + id +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
     }
 }

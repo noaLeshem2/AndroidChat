@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
-/*
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,20 +20,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         });
     }
-}*/
-
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.messages_list);
-
-        ImageButton sndBtn = findViewById(R.id.sendBtn);
-        sndBtn.setOnClickListener(v->{
-            Intent i = new Intent(this, .class);
-            startActivity(i);
-        });
-    }
 }
+
+

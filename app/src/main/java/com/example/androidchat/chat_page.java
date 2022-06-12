@@ -1,6 +1,8 @@
 package com.example.androidchat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.androidchat.adapters.UserAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,6 +38,23 @@ public class chat_page extends AppCompatActivity {
             startActivity(intent);
         });
 
+        RecyclerView lstPosts = findViewById(R.id.list_chats);
+        final UserAdapter adapter = new UserAdapter(this);
+        lstPosts.setAdapter(adapter);
+        lstPosts.setLayoutManager(new LinearLayoutManager(this));
+
+
+        List<Post> posts = new ArrayList<>();
+
+        posts.add(new Post(1,"hi"));
+        posts.add(new Post(2,"hhthrhi"));
+        posts.add(new Post(3,"hhsdyryklllllli"));
+        adapter.setPosts(posts);
+
+
+        //RecyclerView lstPosts = findViewById(R.id.)
+
+        /*
         posts = new ArrayList<>();
 
         ListView lvPosts = findViewById(R.id.list_chats);
@@ -56,6 +76,8 @@ public class chat_page extends AppCompatActivity {
 ;         startActivity(intent);
         });
 
+
+*/
 
     }
     @Override

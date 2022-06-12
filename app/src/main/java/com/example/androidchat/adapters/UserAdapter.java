@@ -28,14 +28,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
         private final TextView disName;
         private final TextView lastMsg;
         private final TextView lastTime;
-        private final de.hdodenhof.circleimageview.CircleImageView imageView;
+        private final de.hdodenhof.circleimageview.CircleImageView imgView;
 
         private PostViewHolder(View item){
             super(item);
-            disName = item.findViewById(R.id.);
-            lastMsg = item.findViewById(R.id);
-            lastTime = item.findViewById(R.id);
-            imageView = item.findViewById(R.id);
+            disName = item.findViewById(R.id.disName);
+            lastMsg = item.findViewById(R.id.lastMsg);
+            lastTime = item.findViewById(R.id.lastTime);
+            imgView = item.findViewById(R.id.imgView);
         }
     }
     private final LayoutInflater myLayout;
@@ -65,7 +65,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
             byte[] bytes = new byte[buffer.capacity()];
             buffer.get(bytes);
             Bitmap bitmapImage = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
-            holder.imageView.setImageBitmap(bitmapImage);
+            holder.imgView.setImageBitmap(bitmapImage);
 
         }
     }
