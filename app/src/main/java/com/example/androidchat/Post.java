@@ -35,4 +35,12 @@ public class Post {
 
     public Post(){
     }
+
+    @Override
+    public String toString(){
+        return "Post{" +
+                "Id=" + id +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

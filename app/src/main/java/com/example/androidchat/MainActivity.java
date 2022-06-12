@@ -17,11 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton to_reg = findViewById(R.id.imageView);
         to_reg.setOnClickListener(v->{
-            Intent i = new Intent(this, RegisterPage.class);
-            startActivity(i);
+            Intent fake = new Intent(this, chat_page.class);
+            startActivity(fake);
+           /* Intent i = new Intent(this, RegisterPage.class);
+            startActivity(i);*/
         });
-    }
-
-    public void aaa(View view) {
     }
 }
