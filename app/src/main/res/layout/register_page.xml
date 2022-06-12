@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:text="@string/from_login_to_regi"
+            android:text="@string/from_regi_to_login"
             android:textSize="20sp" />
 
         <ImageButton
