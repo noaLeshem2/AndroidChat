@@ -1,4 +1,4 @@
-package com.example.androidchat;
+package com.example.androidchat.entities;
 
 import android.media.Image;
 
