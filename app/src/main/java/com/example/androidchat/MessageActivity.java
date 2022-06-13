@@ -1,6 +1,9 @@
 package com.example.androidchat;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,12 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messages_example);
+
+        ImageView to_chatPage = findViewById(R.id.imageBack);
+        to_chatPage.setOnClickListener(v->{
+            Intent i = new Intent(this, chat_page.class);
+            startActivity(i);
+        });
 
         RecyclerView lstMsgs = findViewById(R.id.lstMessages);
         final MessageAdapter adapter = new MessageAdapter(this);

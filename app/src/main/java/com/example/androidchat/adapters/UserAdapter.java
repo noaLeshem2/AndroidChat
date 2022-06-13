@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
     public UserAdapter(Context context){
         myLayout = LayoutInflater.from(context);
     }
+
 
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType){

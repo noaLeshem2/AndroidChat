@@ -1,6 +1,7 @@
 package com.example.androidchat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -12,12 +13,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.androidchat.adapters.UserAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -39,6 +44,7 @@ public class chat_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_page);
 
+
         /*
         db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "PostsDB").allowMainThreadQueries().build();
         postDao = db.postDao();
@@ -51,7 +57,6 @@ public class chat_page extends AppCompatActivity {
             startActivity(intent);
         });
 */
-
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
         final UserAdapter adapter = new UserAdapter(this);

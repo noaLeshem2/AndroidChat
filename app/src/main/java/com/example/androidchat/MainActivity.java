@@ -19,7 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton to_reg = findViewById(R.id.imageView);
         to_reg.setOnClickListener(v->{
-            Intent i = new Intent(this, chat_page.class);
+            Intent i = new Intent(this, RegisterPage.class);
+            startActivity(i);
+        });
+
+        Button loginB = findViewById(R.id.logBtn);
+        loginB.setOnClickListener(v->{
+            Intent i = new Intent(this, MessageActivity.class);
             startActivity(i);
         });
     }
