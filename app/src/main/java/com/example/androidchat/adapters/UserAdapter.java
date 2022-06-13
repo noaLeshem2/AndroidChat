@@ -1,4 +1,4 @@
-package com.example.androidchat.adapters;
+/*package com.example.androidchat.adapters;
 
 
 
@@ -82,4 +82,4 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
     }
 
     public List<Post> getPosts() {return posts;}
-}
+}*/
