@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidchat.Post;
 import com.example.androidchat.R;
+import com.example.androidchat.User;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -28,18 +29,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
         private final TextView disName;
         private final TextView lastMsg;
         private final TextView lastTime;
-        private final de.hdodenhof.circleimageview.CircleImageView imgView;
+        private final ImageView imgView;
 
         private PostViewHolder(View item){
             super(item);
-            disName = item.findViewById(R.id.disName);
-            lastMsg = item.findViewById(R.id.lastMsg);
-            lastTime = item.findViewById(R.id.lastTime);
-            imgView = item.findViewById(R.id.imgView);
+            disName = item.findViewById(R.id.user_name);
+            lastMsg = item.findViewById(R.id.last_msg);
+            lastTime = item.findViewById(R.id.last_time);
+            imgView = item.findViewById(R.id.user_img);
         }
     }
     private final LayoutInflater myLayout;
-    private List<Post> posts;
+    //private List<Post> posts;
+    private List<User> users;
 
     public UserAdapter(Context context){
         myLayout = LayoutInflater.from(context);
@@ -53,23 +55,30 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
 
     @Override
     public  void onBindViewHolder(PostViewHolder holder, int position){
-        if(posts != null){
-            final Post current = posts.get(position);
+        if(users != null){
+            final User current= users.get(position);
+            //final Post current = posts.get(position);
             holder.lastMsg.setText(current.getContent());
             holder.lastTime.setText(current.getTime());
             holder.disName.setText(current.getDisplayName());
+            holder.imgView.setImageResource(current.getImg());
+            //holder.imgView.setImageBitmap(current.getImage1Bitmap());
+
             //convert the image to Bitmap
 
-            Image image = current.getImage();
+            //Image image = current.getImage();
+            /*
             ByteBuffer buffer = image.getPlanes()[0].getBuffer();
             byte[] bytes = new byte[buffer.capacity()];
             buffer.get(bytes);
             Bitmap bitmapImage = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
-            holder.imgView.setImageBitmap(bitmapImage);
+             */
+
 
         }
     }
 
+    /*
     public void setPosts(List<Post> posts){
         this.posts =posts;
         notifyDataSetChanged();
@@ -82,4 +91,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.PostViewHolder
     }
 
     public List<Post> getPosts() {return posts;}
+
+     */
+
+    public void setUsers(List<User> posts){
+        this.users =posts;
+        notifyDataSetChanged();
+    }
+    @Override
+    public int getItemCount(){
+        if (users != null)
+            return users.size();
+        else return 0;
+    }
+
+    public List<User> getUsers() {return users;}
 }
