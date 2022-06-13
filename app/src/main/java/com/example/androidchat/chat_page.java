@@ -1,7 +1,6 @@
 package com.example.androidchat;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -13,24 +12,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.androidchat.adapters.UserAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.imageview.ShapeableImageView;
 
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class chat_page extends AppCompatActivity {
 
@@ -45,18 +38,16 @@ public class chat_page extends AppCompatActivity {
         setContentView(R.layout.activity_chat_page);
 
 
-        /*
         db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "PostsDB").allowMainThreadQueries().build();
         postDao = db.postDao();
-
-
 
         FloatingActionButton addFriendBtn = findViewById(R.id.add_friend_btn);
         addFriendBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, add_chat.class);
             startActivity(intent);
         });
-*/
+
+
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
         final UserAdapter adapter = new UserAdapter(this);
@@ -66,9 +57,9 @@ public class chat_page extends AppCompatActivity {
 
         //List<User> posts = new ArrayList<>();
         List<User> users = new ArrayList<>();
-        users.add(new User(1,"hi", "Noa", "10:50", R.drawable.logo));
-        users.add(new User(1,"hi", "Inbal", "10:50", R.drawable.logo));
-        users.add(new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.logo));
+        users.add(new User(1,"hi", "Noa", "10:50", R.drawable.profile));
+        users.add(new User(1,"hi", "Inbal", "10:50", R.drawable.profile));
+        users.add(new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.profile));
 
         adapter.setUsers(users);
 
