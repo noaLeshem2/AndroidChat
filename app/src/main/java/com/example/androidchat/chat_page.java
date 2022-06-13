@@ -39,18 +39,16 @@ public class chat_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_page);
 
-        /*
+
         db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "PostsDB").allowMainThreadQueries().build();
         postDao = db.postDao();
-
-
 
         FloatingActionButton addFriendBtn = findViewById(R.id.add_friend_btn);
         addFriendBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, add_chat.class);
             startActivity(intent);
         });
-*/
+
 
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
@@ -61,9 +59,9 @@ public class chat_page extends AppCompatActivity {
 
         //List<User> posts = new ArrayList<>();
         List<User> users = new ArrayList<>();
-        users.add(new User(1,"hi", "Noa", "10:50", R.drawable.logo));
-        users.add(new User(1,"hi", "Inbal", "10:50", R.drawable.logo));
-        users.add(new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.logo));
+        users.add(new User(1,"hi", "Noa", "10:50", R.drawable.profile));
+        users.add(new User(1,"hi", "Inbal", "10:50", R.drawable.profile));
+        users.add(new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.profile));
 
         adapter.setUsers(users);
 
