@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.androidchat.adapters.UserAdapter;
+import com.example.androidchat.api.UserApi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -46,7 +47,6 @@ public class chat_page extends AppCompatActivity {
             Intent intent = new Intent(this, add_chat.class);
             startActivity(intent);
         });
-
 
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
