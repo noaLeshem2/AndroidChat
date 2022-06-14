@@ -14,12 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         setContentView(R.layout.login_page);
-
-
 
         Button log_btn = findViewById(R.id.login_button);
 
@@ -38,15 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton to_reg = findViewById(R.id.imageView);
         to_reg.setOnClickListener(v->{
-            Intent i = new Intent(this, RegisterPage.class);
+            Intent i = new Intent(this, chat_page.class);
             startActivity(i);
         });
 
-        Button loginB = findViewById(R.id.logBtn);
-        loginB.setOnClickListener(v->{
-            Intent i = new Intent(this, MessageActivity.class);
-            startActivity(i);
-        });
+
     }
 }
 

@@ -12,9 +12,18 @@ public class Messaging {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private String displayName;
     private List<Message> messagesList;
     private Image image;
     private String time;
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 
     public void setId(int id) {
         this.id = id;

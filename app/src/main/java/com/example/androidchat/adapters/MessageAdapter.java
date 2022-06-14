@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
 
+
     class MessageViewHolder extends RecyclerView.ViewHolder{
         private int id_mess;
         private TextView content;
@@ -30,6 +31,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private ImageView image;
         private TextView display_name;
         private TextView sent;
+
 
         private MessageViewHolder(View itemView){
             super(itemView);
@@ -42,6 +44,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         }
     }
 
+    private int LAYOUT_ONE = 0;
+    private int LAYOUT_TWO = 1;
+
+    @Override
+    public int getItemViewType(int position)
+    {
+        if (messages.get(position).isSent() == 0)
+            return LAYOUT_ONE;
+        else
+            return LAYOUT_TWO;
+    }
+
     private final LayoutInflater myLayout;
     private List<Message> messages;
 
@@ -51,10 +65,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View itemView = myLayout.inflate(R.layout.item_container_sent_message,parent,false);
-        return new MessageViewHolder(itemView);
+        View view = null;
+        switch (viewType){
+            case 0:
+                view = myLayout.inflate(R.layout.item_container_received_message,parent,false);
+                return new MessageViewHolder(view);
+            case 1:
+                view = myLayout.inflate(R.layout.item_container_sent_message,parent,false);
+                return new MessageViewHolder(view);
+        }
+        return null;
     }
-
 
     @Override
     public void onBindViewHolder(MessageViewHolder holder, int position){
@@ -62,7 +83,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             final Message current = messages.get(position);
             holder.content.setText(current.getContent());
             holder.time.setText(current.getTime());
-            //holder.sent.setText(current.isSent());
+            getItemViewType(position);
+
         }
     }
 
