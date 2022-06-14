@@ -16,10 +16,10 @@ public interface WebServiceAPI {
     Call<List<User>> getUsers();
 
     @POST("users")
-    Call<void> createUser(@Body User user);
+    Call<Void> createUser(@Body User user);
 
 
     @DELETE("users/{id}")
-    Call<void> deleteUser(@Path("id") int id);
+    Call<Void> deleteUser(@Path("id") int id);
 
 }
