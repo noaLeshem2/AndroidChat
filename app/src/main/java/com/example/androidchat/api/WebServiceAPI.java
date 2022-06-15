@@ -1,5 +1,6 @@
 package com.example.androidchat.api;
 
+import com.example.androidchat.TempMsg;
 import com.example.androidchat.User;
 import com.example.androidchat.UserTest;
 import com.example.androidchat.entities.Messaging;
@@ -30,6 +31,11 @@ public interface WebServiceAPI {
     @GET("Contacts/{connected}/password")
     Call<ResponseBody> getUserPassword(@Path("connected") String connected);
 
+    @GET("Contacts/{myUsername}/{myFriend}/messages")
+    Call<List<TempMsg>> getMsgs(@Path("myUsername") String myUsername, @Path("myFriend") String myFriend);
+
+    @GET("Contacts/{connected}/name")
+    Call<ResponseBody> getUserDisplayname(@Path("connected") String connected);
 
     @POST("users")
     Call<Void> createUser(@Body User user);

@@ -20,6 +20,7 @@ import com.example.androidchat.entities.Message;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +36,12 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView to_chatPage = findViewById(R.id.imageBack);
 
+
+        RecyclerView lstMsgs = findViewById(R.id.lstMessages);
+        final MessageAdapter adapter = new MessageAdapter(this);
+        lstMsgs.setAdapter(adapter);
+        lstMsgs.setLayoutManager(new LinearLayoutManager(this));
+
         Bundle values = getIntent().getExtras();
         Retrofit retrofit;
         WebServiceAPI webServiceAPI;
@@ -49,31 +56,68 @@ public class MessageActivity extends AppCompatActivity {
 
 
         if (values != null) {
+            String myUsername = values.getString("myUsername");
             String otherUsername = values.getString("userFriend");
-            Call<List<UserTest>> call = webServiceAPI.getUsers(otherUsername);
-            call.enqueue(new Callback<List<UserTest>>() {
+            Call<List<TempMsg>> call = webServiceAPI.getMsgs(myUsername,otherUsername);
+            call.enqueue(new Callback<List<TempMsg>>() {
                 @Override
-                public void onResponse(Call<List<UserTest>> call, Response<List<UserTest>> response) {
-                    List<UserTest> tempUsersTest = response.body();
-                    int i = 0;
-                    List<User> users = new ArrayList<>();
+                public void onResponse(Call<List<TempMsg>> call, Response<List<TempMsg>> response) {
+                    List<TempMsg> tempMsgs = response.body();
+                    Call<ResponseBody> callName = webServiceAPI.getUserDisplayname(myUsername);
+                    callName.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> callName, Response<ResponseBody> response) {
+                            System.out.print("inside");
+                            try {
 
-                    for(UserTest user : tempUsersTest){
-                        User tempUser = new User(0, user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
-                        users.add(tempUser);
-                    }
-/*
+                                String displayName  = response.body().string();
+
+                                int i = 0;
+                                List<Message> messageList = new ArrayList<>();
+
+
+                                for(TempMsg msg : tempMsgs){
+                                    Message message;
+                                    if(msg.isSent()){
+                                         message = new Message(msg.getContent(),msg.getCreated(),1,displayName);
+                                    } else
+                                        message = new Message(msg.getContent(),msg.getCreated(),0,displayName);
+
+                                    messageList.add(message);
+                                }
+                                adapter.setMessages(messageList);
+
+
+                                System.out.print("hgcfghfgh");
+
+                            }catch (Exception e)
+                            {
+                                System.out.print(e);
+
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<ResponseBody> callName, Throwable t) {
+                            System.out.print("failedddd");
+                        }
+                    });
+
+
+
+                    /*
                     //final UserAdapter adapter = new UserAdapter(context);
                     lstPosts.setAdapter(adapter);
                     lstPosts.setLayoutManager(new LinearLayoutManager(context));
-                    adapter.setUsers(users);*/
+                    adapter.setUsers(users);
+
+                     */
 
 //                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");
                     Log.i("hello", "hello");
                 }
 
                 @Override
-                public void onFailure(Call<List<UserTest>> call, Throwable t) {
+                public void onFailure(Call<List<TempMsg>> call, Throwable t) {
                     Log.i("in failure", "failed");
                 }
 
@@ -96,6 +140,7 @@ public class MessageActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        /*
         RecyclerView lstMsgs = findViewById(R.id.lstMessages);
         final MessageAdapter adapter = new MessageAdapter(this);
         lstMsgs.setAdapter(adapter);
@@ -117,5 +162,7 @@ public class MessageActivity extends AppCompatActivity {
         messages.add(new Message("bye",0,"1:00","i"));
         messages.add(new Message("byeeeeee",1,"14:20","m"));
         adapter.setMessages(messages);
+
+         */
     }
 }

@@ -82,6 +82,10 @@ public class chat_page extends AppCompatActivity {
                         String userFriend = chosenUser.getId();
                         Intent i = new Intent(context, MessageActivity.class);
                         i.putExtra("userFriend",userFriend);
+
+                        String myUsername = values.getString("username");
+
+                        i.putExtra("myUsername", myUsername);
                         startActivity(i);
 
                         // do whatever
