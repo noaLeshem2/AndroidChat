@@ -6,8 +6,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.androidchat.entities.Message;
 
-
-@Database(entities = {Post.class, Message.class,User.class}, version =4)
+@Database(entities = {Post.class}, version = 1)
 public abstract class AppDB extends RoomDatabase{
 
     public abstract PostDao postDao();

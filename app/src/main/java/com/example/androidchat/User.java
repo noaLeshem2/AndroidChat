@@ -2,12 +2,9 @@ package com.example.androidchat;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
 import java.io.ByteArrayOutputStream;
 
@@ -16,8 +13,7 @@ public class User {
     public User() {
     }
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    private String id;
     private String content;
     private String displayName;
     //private Image image;
@@ -26,7 +22,7 @@ public class User {
     private byte[] image1;
 
 
-    public User(int id, String content,String displayName,String time, byte[] image1){
+    public User(String id, String content,String displayName,String time, byte[] image1){
         this.id=id;
         this.content=content;
         this.image1 = image1;
@@ -34,14 +30,14 @@ public class User {
         this.displayName = displayName;
     }
 
-    public User(int id, String content,String displayName,String time){
+    public User(String id, String content,String displayName,String time){
         this.id=id;
         this.content=content;
         this.time = time;
         this.displayName = displayName;
     }
 
-    public User(int id, String content,String displayName,String time, int img){
+    public User(String id, String content,String displayName,String time, int img){
         this.id=id;
         this.content=content;
         this.time = time;
@@ -72,11 +68,11 @@ public class User {
         return time;
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
 
-    public void setId(int id1){
+    public void setId(String id1){
         this.id = id1;
     }
 
