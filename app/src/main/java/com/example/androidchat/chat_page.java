@@ -80,7 +80,7 @@ public class chat_page extends AppCompatActivity {
 
                         User chosenUser = adapter.getUsers().get(position);
                         String userFriend = chosenUser.getId();
-                        Intent i = new Intent(context, RegisterPage.class);
+                        Intent i = new Intent(context, MessageActivity.class);
                         i.putExtra("userFriend",userFriend);
                         startActivity(i);
 
