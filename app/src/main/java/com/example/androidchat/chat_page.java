@@ -120,8 +120,6 @@ public class chat_page extends AppCompatActivity {
                     Log.i("in failure", "failed");
                 }
 
-            });
-            //lstPosts.setOnClickListener();
 
 
             /*

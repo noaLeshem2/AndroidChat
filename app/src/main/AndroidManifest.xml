@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         >
         <activity
+            android:name=".MessageActivity"
+            android:exported="false"/>
+        <activity
             android:name=".add_chat"
             android:exported="false" />
         <activity

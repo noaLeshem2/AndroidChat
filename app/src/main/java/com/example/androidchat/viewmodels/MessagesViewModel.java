@@ -8,9 +8,9 @@ import com.example.androidchat.entities.Message;
 import java.util.List;
 
 public class MessagesViewModel extends ViewModel {
-    /*private MessagesRepository mRepository;
+   // private MessagesRepository mRepository;
 
-    private LiveData<List<Message>> messages;
+ /*   private LiveData<List<Message>> messages;
 
     public MessagesViewModel(){
         mRepository = new MessagesRepository();
