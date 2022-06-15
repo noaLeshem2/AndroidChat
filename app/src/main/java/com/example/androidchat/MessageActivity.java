@@ -63,7 +63,7 @@ public class MessageActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<List<TempMsg>> call, Response<List<TempMsg>> response) {
                     List<TempMsg> tempMsgs = response.body();
-                    Call<ResponseBody> callName = webServiceAPI.getUserDisplayname(myUsername);
+                    Call<ResponseBody> callName = webServiceAPI.getUserDisplayname(otherUsername);
                     callName.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> callName, Response<ResponseBody> response) {
@@ -71,6 +71,8 @@ public class MessageActivity extends AppCompatActivity {
                             try {
 
                                 String displayName  = response.body().string();
+                                TextView mTextView = (TextView) findViewById(R.id.displayFriendName);
+                                mTextView.setText(displayName);
 
                                 int i = 0;
                                 List<Message> messageList = new ArrayList<>();
@@ -137,6 +139,8 @@ public class MessageActivity extends AppCompatActivity {
 
         to_chatPage.setOnClickListener(v->{
             Intent i = new Intent(this, chat_page.class);
+            String myUsername = values.getString("myUsername");
+            i.putExtra("username",myUsername);
             startActivity(i);
         });
 
