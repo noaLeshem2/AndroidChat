@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     System.out.print("inside");
                     try {
+
                         String string  = response.body().string();
                         if(string.compareTo(password)==0){
                             Intent i = new Intent(context, chat_page.class);

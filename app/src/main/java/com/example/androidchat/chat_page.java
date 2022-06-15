@@ -94,6 +94,7 @@ public class chat_page extends AppCompatActivity {
         );
 
         if (values != null) {
+
             String myUsername = values.getString("username");
             Call<List<UserTest>> call = webServiceAPI.getUsers(myUsername);
             call.enqueue(new Callback<List<UserTest>>() {
