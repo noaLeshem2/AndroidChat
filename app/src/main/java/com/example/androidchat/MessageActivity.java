@@ -5,6 +5,7 @@ import static com.example.androidchat.MyApplication.context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.messages_example);
 
         ImageView to_chatPage = findViewById(R.id.imageBack);
+        ImageView send_btn = findViewById(R.id.send_msg);
 
 
         RecyclerView lstMsgs = findViewById(R.id.lstMessages);
@@ -142,6 +144,65 @@ public class MessageActivity extends AppCompatActivity {
             String myUsername = values.getString("myUsername");
             i.putExtra("username",myUsername);
             startActivity(i);
+        });
+
+        send_btn.setOnClickListener(v -> {
+            EditText editTextMsg = (EditText)findViewById(R.id.inputMessage);
+
+            String textMsg = editTextMsg.getText().toString();
+            editTextMsg.setText("");
+            //empty msg
+            if(textMsg.compareTo("") != 0) {
+                TempMsg userMsg = new TempMsg(true,0,textMsg,"string");
+                TempMsg friendMsg = new TempMsg(false,0,textMsg,"string");
+
+                if (values != null) {
+                    String myUsername = values.getString("myUsername");
+                    String otherUsername = values.getString("userFriend");
+                    Call<Void> callMyuser = webServiceAPI.addMsg(userMsg,myUsername, otherUsername);
+
+                    callMyuser.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> callMyuser, Response<Void> response) {
+                            //List<Void> tempMsgs = response.body();
+                            Call<Void> callFriend = webServiceAPI.addMsg(friendMsg,otherUsername, myUsername);
+                            callFriend.enqueue(new Callback<Void>() {
+                                @Override
+                                public void onResponse(Call<Void> callFriend, Response<Void> response) {
+                                    onResume();
+                                }
+                                @Override
+                                public void onFailure(Call<Void> callFriend, Throwable t) {
+                                    System.out.print("failedddd");
+                                }
+                            });
+
+
+
+                    /*
+                    //final UserAdapter adapter = new UserAdapter(context);
+                    lstPosts.setAdapter(adapter);
+                    lstPosts.setLayoutManager(new LinearLayoutManager(context));
+                    adapter.setUsers(users);
+
+                     */
+
+//                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");
+                            Log.i("hello", "hello");
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> callMyuser, Throwable t) {
+                            Log.i("in failure", "failed");
+                        }
+
+                    });
+
+
+                }
+
+
+            }
         });
 
         /*

@@ -37,6 +37,11 @@ public interface WebServiceAPI {
     @GET("Contacts/{connected}/name")
     Call<ResponseBody> getUserDisplayname(@Path("connected") String connected);
 
+
+    @POST("Contacts/{myUsername}/{myFriend}/messages")
+    Call<Void> addMsg(@Body TempMsg tempMsg, @Path("myUsername") String myUsername, @Path("myFriend") String myFriend);
+
+
     @POST("users")
     Call<Void> createUser(@Body User user);
 
