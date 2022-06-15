@@ -2,15 +2,21 @@ package com.example.androidchat;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import java.io.ByteArrayOutputStream;
 
 @Entity
 public class User {
+    public User() {
+    }
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String content;
     private String displayName;

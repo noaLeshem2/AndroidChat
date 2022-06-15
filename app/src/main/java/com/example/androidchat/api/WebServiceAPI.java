@@ -2,6 +2,7 @@ package com.example.androidchat.api;
 
 import com.example.androidchat.User;
 import com.example.androidchat.UserTest;
+import com.example.androidchat.entities.Messaging;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ import retrofit2.http.Path;
 public interface WebServiceAPI {
     //@GET("contacts")
     //Call<List<User>> getUsers();
+
+    @GET("Contacts/users")
+    Call<List<Messaging>> getAllUsers();
 
     @GET("Contacts/")
     Call<List<UserTest>> getInbalUsers();

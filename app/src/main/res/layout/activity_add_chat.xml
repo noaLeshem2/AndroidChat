@@ -22,6 +22,18 @@
             android:layout_height="wrap_content"
             android:hint="@string/add_friend_username" />
 
+        <EditText
+            android:id="@+id/friend_server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Server" />
+
+        <EditText
+            android:id="@+id/display_friend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Display Name" />
+
         <Button
             android:id= "@+id/add_friend_btn"
             android:layout_width="wrap_content"

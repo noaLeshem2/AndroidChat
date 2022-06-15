@@ -1,32 +1,38 @@
 package com.example.androidchat;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class add_chat extends AppCompatActivity {
 
     private AppDB db;
-    private PostDao postDao;
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_chat);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "PostsDB").allowMainThreadQueries().build();
-        postDao = db.postDao();
+        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB").allowMainThreadQueries().build();
+        userDao = db.userDao();
 
         Button btnSave = findViewById(R.id.add_friend_btn);
         btnSave.setOnClickListener(view->{
 
-            EditText etItem = findViewById(R.id.my_new_friend);
-            Post post = new Post(0, etItem.getText().toString());
-            postDao.insert(post);
+            EditText id_friend = findViewById(R.id.my_new_friend);
+            EditText server_friend = findViewById(R.id.friend_server);
+            EditText display_friend = findViewById(R.id.display_friend);
+            User user = new User(0,null, display_friend.getText().toString(), null, R.drawable.profile);
+
+            userDao.insert(user);
 
 
             finish();

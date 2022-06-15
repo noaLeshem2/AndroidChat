@@ -10,12 +10,91 @@ import java.util.List;
 @Entity
 public class Messaging {
 
+    public class Chats{
+        private String id;
+        private List<Message> messages;
+
+        public Chats(String id, List<Message> messages) {
+            this.id = id;
+            this.messages = messages;
+        }
+
+        public Chats() {
+        }
+
+        public void setMessages(List<Message> messages) {
+            this.messages = messages;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public List<Message> getMessages() {
+            return messages;
+        }
+    }
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private String id;
     private String displayName;
-    private List<Message> messagesList;
+    private String server;
+    private String password;
+    private List<Chats> chats;
     private Image image;
-    private String time;
+    //private String time;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setChats(List<Chats> chats) {
+        this.chats = chats;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public List<Chats> getChats() {
+        return chats;
+    }
+
+    public Messaging(String id, String displayName, String server, String password, List<Chats> chats, Image image) {
+        this.id = id;
+        this.displayName = displayName;
+        this.server = server;
+        this.password = password;
+        this.chats = chats;
+        this.image = image;
+    }
+
+    public String getServer() {
+        return server;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setServer(String server) {
+        this.server = server;
+    }
+
+    public Messaging(String id, String server, String displayName, Image image) {
+        this.id = id;
+        this.server = server;
+        this.displayName = displayName;
+        this.image = image;
+        //this.time = time;
+    }
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
@@ -25,39 +104,21 @@ public class Messaging {
         return displayName;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setMessagesList(List<Message> messagesList) {
-        this.messagesList = messagesList;
-    }
 
     public void setImage(Image image) {
         this.image = image;
     }
 
-    public void setTime(String time) {
+    /*public void setTime(String time) {
         this.time = time;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public List<Message> getMessagesList() {
-        return messagesList;
-    }
+    }*/
 
     public Image getImage() {
         return image;
     }
 
-    public String getTime() {
+   /* public String getTime() {
         return time;
-    }
+    }*/
 
-    public Messaging(int id) {
-        this.id = id;
-    }
 }

@@ -9,12 +9,29 @@ import androidx.room.PrimaryKey;
 public class Message {
 
     @PrimaryKey(autoGenerate = true)
-    private String content;
-    private String time;
     private int sent;
     private String display_name;
+    private String content;
+    private String time;
 
-  /*  private int id_mess;
+    public Message() {
+    }
+
+    public Message(String content, String time, int sent, String display_name) {
+        this.content = content;
+        this.time = time;
+        this.sent = sent;
+        this.display_name = display_name;
+    }
+
+    public void setDisplay_name(String display_name) {
+        this.display_name = display_name;
+    }
+
+    public int getSent() {
+        return sent;
+    }
+/*  private int id_mess;
     private Image image;*/
 
 

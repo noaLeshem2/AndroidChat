@@ -29,9 +29,10 @@ import java.util.List;
 public class chat_page extends AppCompatActivity {
 
     private AppDB db;
-    private PostDao postDao;
-    private List<Post> posts;
-    private ArrayAdapter<Post> adapter;
+    private UserDao userDao;
+    private List<User> users;
+    private UserAdapter adapter;
+    // private ArrayAdapter<Post> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class chat_page extends AppCompatActivity {
         setContentView(R.layout.activity_chat_page);
 
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "PostsDB").allowMainThreadQueries().build();
-        postDao = db.postDao();
+        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB").allowMainThreadQueries().build();
+        userDao = db.userDao();
 
         FloatingActionButton addFriendBtn = findViewById(R.id.add_friend_btn);
         addFriendBtn.setOnClickListener(v -> {
@@ -48,23 +49,41 @@ public class chat_page extends AppCompatActivity {
             startActivity(intent);
         });
 
+        users = userDao.index();
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
-        final UserAdapter adapter = new UserAdapter(this);
+         adapter = new UserAdapter(this);
         lstPosts.setAdapter(adapter);
+
+        lstPosts.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setUsers(users);
+
         lstPosts.setLayoutManager(new LinearLayoutManager(this));
 
+/*
+        User u1 = new User(1,"hi", "Noa", "10:50", R.drawable.profile);
+        User u2 = new User(1,"hi", "Inbal", "10:50", R.drawable.profile);
+        User u3 = new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.profile);
+*/
+      /*  userDao.insert(u1);
+        userDao.insert(u2);
+        userDao.insert(u3);
 
+       */
+
+
+/*
         //List<User> posts = new ArrayList<>();
         List<User> users = new ArrayList<>();
         users.add(new User(1,"hi", "Noa", "10:50", R.drawable.profile));
         users.add(new User(1,"hi", "Inbal", "10:50", R.drawable.profile));
         users.add(new User(3,"hghfgfhi", "Bar", "10:50", R.drawable.profile));
 
+
         adapter.setUsers(users);
 
 
-
+*/
 
 
 
@@ -133,14 +152,14 @@ public class chat_page extends AppCompatActivity {
 
     }
 
-    /*
+
     @Override
     protected void onResume(){
         super.onResume();
-        posts.clear();
-        posts.addAll(postDao.index());
+        users.clear();
+        users.addAll(userDao.index());
         adapter.notifyDataSetChanged();
     }
 
-     */
+
 }
