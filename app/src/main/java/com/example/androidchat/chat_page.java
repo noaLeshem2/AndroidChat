@@ -72,7 +72,7 @@ public class chat_page extends AppCompatActivity {
         RecyclerView lstPosts = findViewById(R.id.list_chats);
         final UserAdapter adapter = new UserAdapter(context);
 
-        users = userDao.index();
+        //users = userDao.index();
 
         lstPosts.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, lstPosts ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -176,7 +176,7 @@ public class chat_page extends AppCompatActivity {
 
 
 
-*/
+
 
 
 

@@ -30,9 +30,9 @@ public class add_chat extends AppCompatActivity {
             EditText id_friend = findViewById(R.id.my_new_friend);
             EditText server_friend = findViewById(R.id.friend_server);
             EditText display_friend = findViewById(R.id.display_friend);
-            User user = new User(0,null, display_friend.getText().toString(), null, R.drawable.profile);
+            //User user = new User(0,null, display_friend.getText().toString(), null, R.drawable.profile);
 
-            userDao.insert(user);
+           // userDao.insert(user);
 
 
             finish();

@@ -9,6 +9,7 @@ import androidx.room.Update;
 import java.util.List;
 @Dao
 public interface UserDao {
+
     @Query("SELECT * FROM user")
     List<User> index();
 
@@ -23,4 +24,5 @@ public interface UserDao {
 
     @Delete
     void delete(User... users);
+
 }

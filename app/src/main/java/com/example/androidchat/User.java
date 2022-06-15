@@ -10,8 +10,6 @@ import java.io.ByteArrayOutputStream;
 
 @Entity
 public class User {
-    public User() {
-    }
 
     private String id;
     private String content;
@@ -21,8 +19,20 @@ public class User {
     int img;
     private byte[] image1;
 
+    public User() {
+    }
 
-    public User(String id, String content,String displayName,String time, byte[] image1){
+    public User(String id, String content, String displayName, String time, int img, byte[] image1) {
+        this.id = id;
+        this.content = content;
+        this.displayName = displayName;
+        this.time = time;
+        this.img = img;
+        this.image1 = image1;
+    }
+
+    /*
+    public User(String id, String content, String displayName, String time, byte[] image1){
         this.id=id;
         this.content=content;
         this.image1 = image1;
@@ -44,7 +54,7 @@ public class User {
         this.displayName = displayName;
         this.img = img;
     }
-
+*/
     public void setImg(int img){this.img = img;}
     public int getImg(){return img;}
     public void setDisplayName(String displayName){this.displayName = displayName;}
