@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
 
                         String string  = response.body().string();
+
                         if(string.compareTo(password)==0){
                             Intent i = new Intent(context, chat_page.class);
                             i.putExtra("username",myUsername);

@@ -59,14 +59,14 @@ public class MessageActivity extends AppCompatActivity {
                     List<User> users = new ArrayList<>();
 
                     for(UserTest user : tempUsersTest){
-                        User tempUser = new User(user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
+                        User tempUser = new User(0, user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
                         users.add(tempUser);
                     }
-
+/*
                     //final UserAdapter adapter = new UserAdapter(context);
                     lstPosts.setAdapter(adapter);
                     lstPosts.setLayoutManager(new LinearLayoutManager(context));
-                    adapter.setUsers(users);
+                    adapter.setUsers(users);*/
 
 //                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");
                     Log.i("hello", "hello");

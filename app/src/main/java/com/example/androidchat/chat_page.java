@@ -102,10 +102,13 @@ public class chat_page extends AppCompatActivity {
                 public void onResponse(Call<List<UserTest>> call, Response<List<UserTest>> response) {
                     List<UserTest> tempUsersTest = response.body();
                     int i = 0;
+
+
+
                     List<User> users = new ArrayList<>();
 
                     for(UserTest user : tempUsersTest){
-                        User tempUser = new User(user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
+                        User tempUser = new User(0,user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
                         users.add(tempUser);
                     }
 
@@ -250,9 +253,9 @@ public class chat_page extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        users.clear();
+        /*users.clear();
         users.addAll(userDao.index());
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
     }
 
 

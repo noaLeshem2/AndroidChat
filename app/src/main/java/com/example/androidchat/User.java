@@ -2,15 +2,20 @@ package com.example.androidchat;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import java.io.ByteArrayOutputStream;
 
 @Entity
 public class User {
 
+    @PrimaryKey(autoGenerate = true)
+    private int key;
     private String id;
     private String content;
     private String displayName;
@@ -19,10 +24,19 @@ public class User {
     int img;
     private byte[] image1;
 
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
     public User() {
     }
 
-    public User(String id, String content, String displayName, String time, int img, byte[] image1) {
+    public User(int key, String id, String content, String displayName, String time, int img, byte[] image1) {
+        this.key = key;
         this.id = id;
         this.content = content;
         this.displayName = displayName;
@@ -31,8 +45,9 @@ public class User {
         this.image1 = image1;
     }
 
-    /*
-    public User(String id, String content, String displayName, String time, byte[] image1){
+
+    public User(int key, String id, String content,String displayName,String time, byte[] image1){
+        this.key=key;
         this.id=id;
         this.content=content;
         this.image1 = image1;
@@ -40,21 +55,24 @@ public class User {
         this.displayName = displayName;
     }
 
-    public User(String id, String content,String displayName,String time){
+
+    public User(int key, String id, String content,String displayName,String time){
+        this.key=key;
         this.id=id;
         this.content=content;
         this.time = time;
         this.displayName = displayName;
     }
 
-    public User(String id, String content,String displayName,String time, int img){
+    public User(int key,String id, String content,String displayName,String time, int img){
+        this.key=key;
         this.id=id;
         this.content=content;
         this.time = time;
         this.displayName = displayName;
         this.img = img;
     }
-*/
+
     public void setImg(int img){this.img = img;}
     public int getImg(){return img;}
     public void setDisplayName(String displayName){this.displayName = displayName;}
