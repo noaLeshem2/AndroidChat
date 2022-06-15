@@ -1,10 +1,16 @@
 package com.example.androidchat.api;
 
 
+import android.content.Context;
 import android.media.session.MediaSession;
 import android.util.Log;
 
+import androidx.room.Room;
+
+import com.example.androidchat.AppDB;
 import com.example.androidchat.MyApplication;
+import com.example.androidchat.Password;
+import com.example.androidchat.PasswordDao;
 import com.example.androidchat.R;
 import com.example.androidchat.User;
 import com.example.androidchat.UserTest;
@@ -18,10 +24,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class UserApi {
     Retrofit retrofit;
     WebServiceAPI webServiceAPI;
-    List<String> connected;
+
 
     public UserApi(){
         retrofit = new Retrofit.Builder()
@@ -40,6 +47,7 @@ public class UserApi {
             @Override
             public void onResponse(Call<List<UserTest>> call, Response<List<UserTest>> response) {
                 List<UserTest> users = response.body();
+
 //                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");
                 Log.i("hello", "hello");
             }
@@ -71,16 +79,26 @@ public class UserApi {
 
 
  */
-    public void getPassword(String username){
+    public void getPassword(String username, Context context){
+
         Call<ResponseBody> call = webServiceAPI.getUserPassword(username);
-        String password;
+        //String password;
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                System.out.print("inside");
                 try {
                     String string  = response.body().string();
+                    //AppDB db = Room.databaseBuilder(context.getApplicationContext(), AppDB.class, "PasswordDao").allowMainThreadQueries().build();
+                    //PasswordDao passwordDao = db.passwordDao();
+                    //Password myPass = new Password(0,username,string);
+                    //passwordDao.insert(myPass);
+                    Log.i("hello", "hello");
+                    Log.i("hello", "hello");
+
                 }catch (Exception e)
                 {
+                    System.out.print(e);
 
                 }
             }
