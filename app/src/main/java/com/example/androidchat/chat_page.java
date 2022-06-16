@@ -61,8 +61,14 @@ public class chat_page extends AppCompatActivity {
                 .build();
         webServiceAPI = retrofit.create(WebServiceAPI.class);
 
+        RecyclerView lstPosts = findViewById(R.id.list_chats);
+        final UserAdapter adapter = new UserAdapter(context);
         db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB").allowMainThreadQueries().build();
         userDao = db.userDao();
+        if(userDao.index() != null){
+            adapter.setUsers(userDao.index());
+        }
+
 
         FloatingActionButton addFriendBtn = findViewById(R.id.add_friend_btn);
         addFriendBtn.setOnClickListener(v -> {
@@ -71,8 +77,7 @@ public class chat_page extends AppCompatActivity {
             intent.putExtra("myUsername", myUsername);
             startActivity(intent);
         });
-        RecyclerView lstPosts = findViewById(R.id.list_chats);
-        final UserAdapter adapter = new UserAdapter(context);
+
 
         //users = userDao.index();
 
@@ -109,18 +114,24 @@ public class chat_page extends AppCompatActivity {
                     List<UserTest> tempUsersTest = response.body();
                     int i = 0;
 
-
-
+                    //delete room
+                    for(User daoUser : userDao.index()){
+                        userDao.delete(daoUser);
+                    }
                     List<User> users = new ArrayList<>();
 
                     for(UserTest user : tempUsersTest){
                         User tempUser = new User(0,user.getId(),user.getLast(),user.getName(),user.getLastDate(), R.drawable.profile);
                         users.add(tempUser);
+                        userDao.insert(tempUser);
                     }
 
                     //final UserAdapter adapter = new UserAdapter(context);
                     lstPosts.setAdapter(adapter);
                     lstPosts.setLayoutManager(new LinearLayoutManager(context));
+                    //userDao.update();
+
+
                     adapter.setUsers(users);
 
 //                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");

@@ -182,6 +182,7 @@ public class MessageActivity extends AppCompatActivity {
 
                                                             messageList.add(message);
                                                         }
+
                                                         adapter.setMessages(messageList);
 
 

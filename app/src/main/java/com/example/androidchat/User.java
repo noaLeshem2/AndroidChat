@@ -32,6 +32,14 @@ public class User {
         return key;
     }
 
+    public User(String id, String content, String displayName, String time, int img) {
+        this.id = id;
+        this.content = content;
+        this.displayName = displayName;
+        this.time = time;
+        this.img = img;
+    }
+
     public User() {
     }
 
