@@ -1,7 +1,5 @@
 # In-Chat Android Project based on Server communication by Inbal & Noa
 Meet our chat for contact and share data.
-## The required installations-
-
 ## What our chat do?
 We created chat, which support sharing text messages by using server.
 ### How should i use the chat?
