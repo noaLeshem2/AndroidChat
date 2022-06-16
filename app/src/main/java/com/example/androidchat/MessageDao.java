@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface MessageDao {
-/*
+
     @Query("SELECT * FROM message")
     List<Message> index();
 
@@ -25,5 +25,5 @@ public interface MessageDao {
     @Delete
     void delete(Message... messages);
 
- */
+
 }
