@@ -32,6 +32,7 @@ public interface WebServiceAPI {
     @GET("Contacts/{connected}/password")
     Call<ResponseBody> getUserPassword(@Path("connected") String connected);
 
+
     @GET("Contacts/{myUsername}/{myFriend}/messages")
     Call<List<TempMsg>> getMsgs(@Path("myUsername") String myUsername, @Path("myFriend") String myFriend);
 

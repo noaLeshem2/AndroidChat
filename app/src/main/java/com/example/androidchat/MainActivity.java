@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Button log_btn = findViewById(R.id.login_button);
 
         log_btn.setOnClickListener(v -> {
+
             // get the username and password.
             EditText tempUserName = (EditText)findViewById(R.id.editTextTextPersonName);
             String myUsername = tempUserName.getText().toString();
