@@ -66,7 +66,9 @@ public class chat_page extends AppCompatActivity {
         final UserAdapter adapter = new UserAdapter(context);
         db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB").allowMainThreadQueries().build();
         userDao = db.userDao();
-        if(userDao.index() != null){
+        List<User> roomUser = userDao.index();
+
+        if (roomUser.size() != 0){
             adapter.setUsers(userDao.index());
         }
 
