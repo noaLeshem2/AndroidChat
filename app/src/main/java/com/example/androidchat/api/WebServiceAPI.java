@@ -3,6 +3,7 @@ package com.example.androidchat.api;
 import com.example.androidchat.TempMsg;
 import com.example.androidchat.User;
 import com.example.androidchat.UserTest;
+import com.example.androidchat.entities.AllUsers;
 import com.example.androidchat.entities.Messaging;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface WebServiceAPI {
     //Call<List<User>> getUsers();
 
     @GET("Contacts/users")
-    Call<List<Messaging>> getAllUsers();
+    Call<List<AllUsers>> getAllUsers();
 
     @GET("Contacts/")
     Call<List<UserTest>> getInbalUsers();

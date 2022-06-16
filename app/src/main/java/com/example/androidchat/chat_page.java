@@ -67,6 +67,8 @@ public class chat_page extends AppCompatActivity {
         FloatingActionButton addFriendBtn = findViewById(R.id.add_friend_btn);
         addFriendBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, add_chat.class);
+            String myUsername = values.getString("username");
+            intent.putExtra("myUsername", myUsername);
             startActivity(intent);
         });
         RecyclerView lstPosts = findViewById(R.id.list_chats);

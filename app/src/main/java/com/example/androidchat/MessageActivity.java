@@ -55,8 +55,6 @@ public class MessageActivity extends AppCompatActivity {
         webServiceAPI = retrofit.create(WebServiceAPI.class);
 
 
-
-
         if (values != null) {
             String myUsername = values.getString("myUsername");
             String otherUsername = values.getString("userFriend");

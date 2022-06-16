@@ -39,6 +39,7 @@ public class Messaging {
         }
     }
     @PrimaryKey(autoGenerate = true)
+    private int key;
     private String id;
     private String displayName;
     private String server;
@@ -46,6 +47,25 @@ public class Messaging {
     private List<Chats> chats;
     private Image image;
     //private String time;
+
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public Messaging(int key, String id, String displayName, String server, String password, List<Chats> chats, Image image) {
+        this.key = key;
+        this.id = id;
+        this.displayName = displayName;
+        this.server = server;
+        this.password = password;
+        this.chats = chats;
+        this.image = image;
+    }
 
     public void setPassword(String password) {
         this.password = password;
