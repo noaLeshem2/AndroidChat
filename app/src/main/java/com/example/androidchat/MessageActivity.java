@@ -106,17 +106,6 @@ public class MessageActivity extends AppCompatActivity {
                         }
                     });
 
-
-
-                    /*
-                    //final UserAdapter adapter = new UserAdapter(context);
-                    lstPosts.setAdapter(adapter);
-                    lstPosts.setLayoutManager(new LinearLayoutManager(context));
-                    adapter.setUsers(users);
-
-                     */
-
-//                System.out.print("jtjgjfjjfdjdjrgjnghbjbjbgkjhbsd");
                     Log.i("hello", "hello");
                 }
 
@@ -126,16 +115,9 @@ public class MessageActivity extends AppCompatActivity {
                 }
 
             });
+
             //lstPosts.setOnClickListener();
 
-
-            /*
-            RecyclerView lstPosts = findViewById(R.id.list_chats);
-            final UserAdapter adapter = new UserAdapter(this);
-            lstPosts.setAdapter(adapter);
-            lstPosts.setLayoutManager(new LinearLayoutManager(this));
-
-             */
 
         }
 
@@ -169,7 +151,66 @@ public class MessageActivity extends AppCompatActivity {
                             callFriend.enqueue(new Callback<Void>() {
                                 @Override
                                 public void onResponse(Call<Void> callFriend, Response<Void> response) {
-                                    onResume();
+
+                                    String myUsername = values.getString("myUsername");
+                                    String otherUsername = values.getString("userFriend");
+                                    Call<List<TempMsg>> call = webServiceAPI.getMsgs(myUsername,otherUsername);
+                                    call.enqueue(new Callback<List<TempMsg>>() {
+                                        @Override
+                                        public void onResponse(Call<List<TempMsg>> call, Response<List<TempMsg>> response) {
+                                            List<TempMsg> tempMsgs = response.body();
+                                            Call<ResponseBody> callName = webServiceAPI.getUserDisplayname(otherUsername);
+
+                                            callName.enqueue(new Callback<ResponseBody>() {
+                                                @Override
+                                                public void onResponse(Call<ResponseBody> callName, Response<ResponseBody> response) {
+                                                    System.out.print("inside");
+                                                    try {
+
+                                                        String displayName  = response.body().string();
+                                                        TextView mTextView = (TextView) findViewById(R.id.displayFriendName);
+                                                        mTextView.setText(displayName);
+
+                                                        int i = 0;
+                                                        List<Message> messageList = new ArrayList<>();
+
+
+                                                        for(TempMsg msg : tempMsgs){
+                                                            Message message;
+                                                            if(msg.isSent()){
+                                                                message = new Message(msg.getContent(),msg.getCreated(),1,displayName);
+                                                            } else
+                                                                message = new Message(msg.getContent(),msg.getCreated(),0,displayName);
+
+                                                            messageList.add(message);
+                                                        }
+                                                        adapter.setMessages(messageList);
+
+
+                                                        System.out.print("hgcfghfgh");
+
+                                                    }catch (Exception e)
+                                                    {
+                                                        System.out.print(e);
+
+                                                    }
+                                                }
+                                                @Override
+                                                public void onFailure(Call<ResponseBody> callName, Throwable t) {
+                                                    System.out.print("failedddd");
+                                                }
+                                            });
+
+                                            Log.i("hello", "hello");
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<List<TempMsg>> call, Throwable t) {
+                                            Log.i("in failure", "failed");
+                                        }
+
+                                    });
+                                    //onResume();
                                 }
                                 @Override
                                 public void onFailure(Call<Void> callFriend, Throwable t) {
@@ -230,4 +271,5 @@ public class MessageActivity extends AppCompatActivity {
 
          */
     }
+
 }
