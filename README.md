@@ -23,5 +23,5 @@ username = michal321, password = 123. <br/>
 *to see the chat we created in hard-coded, use one of the usernames and passowrds above.*
 ## How to run the project?
 We have to run the server first, run this server repository - https://github.com/noaLeshem2/MyNewServerAPI.git - run the ServerApi folder.
-After the server is running, run this android chat repository - https://github.com/noaLeshem2/AndroidChat.git, and open a device in android studio.
+After the server is running, run this android chat repository - https://github.com/noaLeshem2/AndroidChat.git - and open a device in android studio.
 then the chat is running.
