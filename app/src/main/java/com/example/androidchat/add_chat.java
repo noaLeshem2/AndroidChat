@@ -34,6 +34,59 @@ import retrofit2.http.Path;
 
 public class add_chat extends AppCompatActivity {
 
+    public class UserToInvited{
+        String id;
+        String server;
+        String name;
+        String connected;
+
+        public UserToInvited(String id, String server, String name, String connected) {
+            this.id = id;
+            this.server = server;
+            this.name = name;
+            this.connected = connected;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public String getServer() {
+            return server;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getConnected() {
+            return connected;
+        }
+    }
+
+    public class Invited{
+        String from;
+        String to;
+        String server;
+
+        public Invited(String from, String to, String server) {
+            this.from = from;
+            this.to = to;
+            this.server = server;
+        }
+
+        public String getFrom() {
+            return from;
+        }
+
+        public String getTo() {
+            return to;
+        }
+
+        public String getServer() {
+            return server;
+        }
+    }
     private AppDB db;
     private UserDao userDao;
 
@@ -89,15 +142,43 @@ public class add_chat extends AppCompatActivity {
                                     callName.enqueue(new Callback<List<UserTest>>() {
                                         @Override
                                         public void onResponse(Call<List<UserTest>> callName, Response<List<UserTest>> response) {
-                                            System.out.print("inside");
                                             try {
 
                                                 List<UserTest> contacts = response.body();
                                                 if (contacts != null) {
+                                                    int is_friend=0;
                                                     for (UserTest contact : contacts) {
-                                                        if (contact.getId().compareTo(id_friend.getText().toString()) != 0) {
-                                                            System.out.print("good");
+                                                        if (contact.getId().compareTo(id_friend.getText().toString()) == 0) {
+                                                            is_friend = 1;
+                                                            break;
                                                         }
+                                                    }
+                                                    if(is_friend == 0){
+                                                        // Add friend to my contacts
+                                                        String myUsername = values.getString("myUsername");
+                                                        Call<Void> callMyContacts = webServiceAPI.addFriend(new UserToInvited(id_friend.getText().toString(), server_friend.getText().toString(), display_friend.getText().toString(), myUsername));
+                                                        callMyContacts.enqueue(new Callback<Void>() {
+                                                            public void onResponse(Call<Void> callMyContacts, Response<Void> response) {
+                                                                Call<Void> inviteCall = webServiceAPI.inviteFriend(new Invited(myUsername, id_friend.getText().toString(), server_friend.getText().toString()));
+                                                                inviteCall.enqueue(new Callback<Void>() {
+                                                                    public void onResponse(Call<Void> inviteCall, Response<Void> response) {
+                                                                        Intent i = new Intent(context, chat_page.class);
+                                                                        i.putExtra("username",myUsername);
+                                                                        startActivity(i);
+                                                                    }
+                                                                    public void onFailure(Call<Void> inviteCall, Throwable t) {
+                                                                        System.out.print("failedddd");
+                                                                    }
+                                                                });
+
+                                                            }
+                                                            @Override
+                                                            public void onFailure(Call<Void> callMyContacts, Throwable t) {
+                                                                System.out.print("failedddd");
+                                                            }
+
+
+                                                        });
                                                     }
                                                 }
 
@@ -137,8 +218,14 @@ public class add_chat extends AppCompatActivity {
 
             }
 
+        });
 
-            finish();
+        Button returnBtn = findViewById(R.id.returnBtn);
+        returnBtn.setOnClickListener(v->{
+            Intent i = new Intent(this, chat_page.class);
+            String myUsername = values.getString("myUsername");
+            i.putExtra("username",myUsername);
+            startActivity(i);
         });
     }
 }

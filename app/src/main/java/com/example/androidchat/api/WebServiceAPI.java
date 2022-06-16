@@ -1,8 +1,11 @@
 package com.example.androidchat.api;
 
+import com.example.androidchat.RegisterPage;
 import com.example.androidchat.TempMsg;
 import com.example.androidchat.User;
 import com.example.androidchat.UserTest;
+import com.example.androidchat.add_chat;
+import com.example.androidchat.chat_page;
 import com.example.androidchat.entities.AllUsers;
 import com.example.androidchat.entities.Messaging;
 
@@ -14,6 +17,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface WebServiceAPI {
@@ -44,11 +48,20 @@ public interface WebServiceAPI {
     Call<Void> addMsg(@Body TempMsg tempMsg, @Path("myUsername") String myUsername, @Path("myFriend") String myFriend);
 
 
+    @POST("Contacts")
+    Call<Void> addFriend(@Body add_chat.UserToInvited userToInvited);
+
+    @POST("Contacts/new")
+    Call<Void> regFriend(@Body RegisterPage.UserToReg userToReg);
+
     @POST("users")
     Call<Void> createUser(@Body User user);
 
 
     @DELETE("users/{id}")
     Call<Void> deleteUser(@Path("id") int id);
+
+    @POST("invitations")
+    Call<Void> inviteFriend(@Body add_chat.Invited invited);
 
 }

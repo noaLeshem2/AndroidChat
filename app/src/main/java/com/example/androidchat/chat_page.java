@@ -53,6 +53,7 @@ public class chat_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_page);
         Bundle values = getIntent().getExtras();
+
         Retrofit retrofit;
         WebServiceAPI webServiceAPI;
         retrofit = new Retrofit.Builder()
@@ -61,6 +62,8 @@ public class chat_page extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         webServiceAPI = retrofit.create(WebServiceAPI.class);
+
+
 
         RecyclerView lstPosts = findViewById(R.id.list_chats);
         final UserAdapter adapter = new UserAdapter(context);
