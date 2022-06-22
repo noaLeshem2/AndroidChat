@@ -145,6 +145,12 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, RegisterPage.class);
             startActivity(i);
         });
+
+        Button toSettings = findViewById(R.id.settingsBtn);
+        toSettings.setOnClickListener(v->{
+            Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
+        });
     }
 }
 

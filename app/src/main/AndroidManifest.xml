@@ -29,6 +29,8 @@
         <activity
             android:name=".RegisterPage"
             android:exported="false" />
+        <activity android:name=".SettingsActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
